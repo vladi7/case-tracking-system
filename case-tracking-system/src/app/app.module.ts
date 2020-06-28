@@ -12,6 +12,10 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DropzoneDirective } from './components/dropzone/dropzone.directive';
+import { FileUploaderComponent } from './components/dropzone/fileuploader/fileuploader.component';
+import { UploadTaskComponent } from './components/dropzone/upload-task/upload-task.component';
 
 
 @NgModule({
@@ -21,14 +25,18 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    DropzoneDirective,
+    FileUploaderComponent,
+    UploadTaskComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
