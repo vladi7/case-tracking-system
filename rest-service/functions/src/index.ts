@@ -151,12 +151,12 @@ app.delete('/cases/:id', async (request, response) => {
 
 app.post('/document', async (request, response) => {
     try {
-        const { CaseID, urls} = request.body;
+        const { DocumentID, urls} = request.body;
         const data =  {
-            CaseID,
+            DocumentID,
             urls
         }
-        await db.collection('documents').doc(data.CaseID).set(data);
+        await db.collection('documents').doc(data.DocumentID).set(data);
         response.json({
             id: 'document added',
         });
@@ -170,19 +170,19 @@ app.post('/document', async (request, response) => {
 
 app.get('/document/:id', async (request, response) => {
     try {
-        const CaseID = request.params.id;
+        const DocumentID = request.params.id;
 
-        if (!CaseID) throw new Error('Document ID is required');
+        if (!DocumentID) throw new Error('Document ID is required');
 
-        const caseRef = await db.collection('documents').doc(CaseID).get();
+        const documentRef = await db.collection('documents').doc(DocumentID).get();
 
-        if (!caseRef.exists){
+        if (!documentRef.exists){
             throw new Error('File doesnt exist.')
         }
 
         response.json({
-            id: caseRef.id,
-            data: caseRef.data()
+            id: documentRef.id,
+            data: documentRef.data()
         });
 
     } catch(error){
@@ -221,16 +221,16 @@ app.get('/documents', async (request, response) => {
 app.delete('/documents/:id', async (request, response) => {
     try {
 
-        const CaseID = request.params.id;
+        const DocumentID = request.params.id;
 
-        if (!CaseID) throw new Error('id is blank');
+        if (!DocumentID) throw new Error('id is blank');
 
         await db.collection('documents')
-            .doc(CaseID)
+            .doc(DocumentID)
             .delete();
 
         response.json({
-            id: CaseID,
+            id: DocumentID,
         })
 
 
