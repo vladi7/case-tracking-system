@@ -9,7 +9,8 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 
 import { AuthGuard } from './shared/guard/auth.guard';
 import {FileUploaderComponent} from './components/dropzone/fileuploader/fileuploader.component';
-
+import { CaselistComponent } from './components/caselist/caselist.component';
+import { FilelistComponent } from './components/filelist/filelist.component';
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full'},
   { path: 'sign-in', component: SignInComponent},
@@ -17,7 +18,9 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent},
-  {path: 'app-fileuploader', component: FileUploaderComponent}
+  {path: 'app-fileuploader', component: FileUploaderComponent},
+  {path: 'app-caselist', component: CaselistComponent},
+  {path: 'app-filelist/:id', component: FilelistComponent}
 ];
 
 @NgModule({

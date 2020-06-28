@@ -1,0 +1,27 @@
+<h2><b>Choose Case Below
+
+<div class="container">
+  <div class="row" *ngIf="authService.userData as user">
+<!--    {{findUserOnPage(user.email)}}-->
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6" *ngFor="let caseEntry of caseList">
+        <div *ngIf="caseEntry?.name">
+        <div class="card bg-dark text-white" style="margin: 20px auto;">
+        <div class="img-wrapper">
+<!--          <img class="img-responsive" src="{{caseEntry.icon}}">-->
+          <div class="img-overlay">
+<!--            <a href="{{caseEntry.url}}" target="_blank" class="btn-md btn btn-outline-danger">View The Recipe</a>-->
+          </div>
+        </div>
+
+        <div>
+          <div class="card-body">
+            <h5 class="card-title">{{caseEntry?.manager | slice:0:30}}</h5>
+            <h5 class="card-title">{{caseEntry?.name | slice:0:30}}</h5>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -37,9 +37,9 @@ app.post('/case', async (request, response) => {
         }
         await db.collection('cases').doc(data.name).set(data);
         response.json({
-            id: 'case added',
+            id: data.name,
+            data: data
         });
-
     } catch(error){
 
         response.status(500).send(error);
