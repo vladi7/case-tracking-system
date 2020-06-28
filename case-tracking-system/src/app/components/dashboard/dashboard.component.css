@@ -1,0 +1,27 @@
+.body{
+  font-family: 'Montserrat', sans-serif;
+}
+
+/*content section*/
+#content{
+  background-color: #cfb495;
+  font-family: 'Ubuntu', sans-serif;
+  color: black;
+  padding: 5% 15% ;
+}
+/*footer section*/
+#footer{
+  padding:3rem;
+  background-color:#a35638;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
