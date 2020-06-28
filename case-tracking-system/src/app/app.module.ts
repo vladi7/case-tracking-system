@@ -18,6 +18,8 @@ import { FileUploaderComponent } from './components/dropzone/fileuploader/fileup
 import { UploadTaskComponent } from './components/dropzone/upload-task/upload-task.component';
 import { CaselistComponent } from './components/caselist/caselist.component';
 import { FilelistComponent } from './components/filelist/filelist.component';
+import {ProfileComponent} from './components/profile/profile.component';
+import {HeaderComponent} from './components/header/header.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { FilelistComponent } from './components/filelist/filelist.component';
     FileUploaderComponent,
     UploadTaskComponent,
     CaselistComponent,
-    FilelistComponent
+    FilelistComponent,
+    ProfileComponent,
+    HeaderComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

@@ -1,1 +1,29 @@
-<p>filelist works!</p>
+<div class="container-fluid">
+  <section id="header">
+    <app-header></app-header>
+  </section>
+  <section id="content">
+    <div class="container">
+      <div class="row" *ngIf="authService.userData as user">
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6"   *ngFor="let fileEntry of fileList">
+          <div class="card bg-dark text-white" style="margin: 20px auto;">
+            <div class="img-wrapper">
+              <img class="img-responsive" src="../../../assets/logo1.png">
+              <div class="img-overlay">
+                <a class="btn-md btn btn-outline-danger" target="_blank" href = {{fileEntry.url}}>Download this file</a>
+              </div>
+            </div>
+            <div>
+              <div class="card-body">
+                <h5 class="card-title">File Name: {{fileEntry.filename | slice:0:30}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer id="footer">
+    <p>© Copyright 2020--CSEE 5590: Web and Mobile Programming</p>
+  </footer>
+</div>

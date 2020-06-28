@@ -177,7 +177,7 @@ app.get('/document/:id', async (request, response) => {
         const caseRef = await db.collection('documents').doc(CaseID).get();
 
         if (!caseRef.exists){
-            throw new Error('Fight doesnt exist.')
+            throw new Error('File doesnt exist.')
         }
 
         response.json({
