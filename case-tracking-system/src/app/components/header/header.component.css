@@ -2,6 +2,7 @@
 
 .navbar{
   padding:3rem 6rem;
+  max-height: 100px;
 }
 
 .nav-item{

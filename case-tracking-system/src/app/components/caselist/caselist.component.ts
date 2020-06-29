@@ -21,11 +21,12 @@ export class CaselistComponent implements OnInit {
     this.caselistService.getAllCasesForAUser().subscribe((result: any) => {
         this.caseList = Object.keys(result).map(keyForHits => {
           return{
-            name: result[keyForHits].data.name, manager: result[keyForHits].data.manager
+            name: result[keyForHits].data.name, manager: result[keyForHits].data.manager, COI: result[keyForHits].data.COI
           };
         });
 
         this.caseList = this.filterData(this.caseList);
+
       }, error => {
         this.errors = 'Error when submitting request. Check your input. Also, you might need to wait since the api calls are limited.';
       }
@@ -38,7 +39,7 @@ export class CaselistComponent implements OnInit {
   filterData(data){
     this.newData = [];
     for (let i = 0; i < data.length; i++) {
-
+      console.log('CaseList with COI' + data[i].COI);
         if (data[i].manager === this.currentUserEmail){
           this.newData.push(data[i]);
         }
