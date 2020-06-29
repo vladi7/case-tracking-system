@@ -4,16 +4,17 @@
 
 /*content section*/
 #content{
-  background-color: #ECEFF1;
+  background-color: #ddf3f5;
   font-family: 'Ubuntu', sans-serif;
   color: black;
   padding: 5% 15% ;
-  min-height: 686px;
+  background-size: cover;
+  min-height:686px;
 }
 /*footer section*/
 #footer{
   padding:3rem;
-  background-color:#f9b384;
+  background-color: #ECEFF1;
   text-align: center;
 }
 .card {
