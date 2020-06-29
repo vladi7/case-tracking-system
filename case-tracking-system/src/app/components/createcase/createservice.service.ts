@@ -9,8 +9,8 @@ export class CreateserviceService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  createCasePost(name, manager, date, COI){
-     this.http.post<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/case/', {name, manager, date, COI }).subscribe(data => {
+  createCasePost(name, manager, date, COI, usersWithCOI){
+     this.http.post<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/case/', {name, manager, date, COI, usersWithCOI }).subscribe(data => {
        let map = new Map<string, string>();
        map.set('filename', '');
        map.set('url', '');

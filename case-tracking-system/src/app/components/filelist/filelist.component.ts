@@ -31,6 +31,7 @@ export class FilelistComponent implements OnInit {
         this.errors = 'Error when submitting request. Check your input. Also, you might need to wait since the api calls are limited.';
       }
     );
+    this.documentlistService.handleOtherCases(this.id);
   }
 
   ngOnInit(): void {

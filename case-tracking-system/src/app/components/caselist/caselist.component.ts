@@ -21,7 +21,7 @@ export class CaselistComponent implements OnInit {
     this.caselistService.getAllCasesForAUser().subscribe((result: any) => {
         this.caseList = Object.keys(result).map(keyForHits => {
           return{
-            name: result[keyForHits].data.name, manager: result[keyForHits].data.manager, COI: result[keyForHits].data.COI
+            name: result[keyForHits].data.name, manager: result[keyForHits].data.manager, COI: result[keyForHits].data.COI, usersWithCOI: result[keyForHits].data.usersWithCOI
           };
         });
 
@@ -39,11 +39,14 @@ export class CaselistComponent implements OnInit {
   filterData(data){
     this.newData = [];
     for (let i = 0; i < data.length; i++) {
-      console.log('CaseList with COI' + data[i].COI);
-        if (data[i].manager === this.currentUserEmail){
+      let users = [];
+      users = data[i].usersWithCOI;
+      console.log("Users from filter" + users);
+      if(users !== undefined){
+        if (data[i].manager === this.currentUserEmail && !users.includes(this.currentUserEmail)){
           this.newData.push(data[i]);
         }
-      }
+      }}
     return this.newData;
       }
 
