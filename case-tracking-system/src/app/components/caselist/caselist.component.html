@@ -3,10 +3,21 @@
     <app-header></app-header>
   </section>
   <section id="content">
+
+
     <div class="container">
+
+      <div class="row form-group">
+        <div class="col-4">
+          <a [routerLink]="['/app-createcase']" class="btn-md btn btn-success">Create Case</a>
+        </div>
+        <div class="col-4">
+          <button (click)="refresh()" button type="button" class="btn btn-warning">Refresh</button>
+        </div>
+      </div>
       <div class="row" *ngIf="authService.userData as user">
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6" *ngFor="let caseEntry of caseList">
-            <div class="card bg-dark text-white" [style.background]="getRandomColor()" style="margin: 20px auto;">
+            <div class="card bg-dark text-white" style="margin: 20px auto;">
               <div class="img-wrapper">
                 <img class="img-responsive" src="../../../assets/logo1.png">
                 <div class="img-overlay">

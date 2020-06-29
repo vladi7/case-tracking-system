@@ -16,7 +16,7 @@ export class SignInComponent implements OnInit {
     // this.http.get<any>("https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/cases/").subscribe(data => {
     //   console.log(data);
     // })
-    const name = 'case7';
+    const name = 'case9';
     const manager = 'dubrovenski.v@gmail.com';
     const  date = 6272020;
     const url = 'www.helloworld.com';
@@ -26,12 +26,15 @@ export class SignInComponent implements OnInit {
     const CaseID = "case1";
     const url1 = 'www.helloworld.com';
     const url2 = 'www.helloworld2.com';
+    let COI = [];
+
+    COI.push(COI1);
+    COI.push(COI2);
 
 
-
-    // this.http.post<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/case/', {name, manager, date, url, COI : {COI1, COI2} }).subscribe(data => {
-    //   console.log(data);
-    // });
+    this.http.post<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/case/', {name, manager, date, url, COI }).subscribe(data => {
+      console.log(data);
+    });
     // this.http.post<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/document/', {CaseID, urls : {url1, url2} }).subscribe(data => {
     //   console.log(data);
     // });

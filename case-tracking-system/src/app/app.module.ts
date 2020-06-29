@@ -20,6 +20,7 @@ import { CaselistComponent } from './components/caselist/caselist.component';
 import { FilelistComponent } from './components/filelist/filelist.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {HeaderComponent} from './components/header/header.component';
+import { CreatecaseComponent } from './components/createcase/createcase.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {HeaderComponent} from './components/header/header.component';
     CaselistComponent,
     FilelistComponent,
     ProfileComponent,
-    HeaderComponent
+    HeaderComponent,
+    CreatecaseComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

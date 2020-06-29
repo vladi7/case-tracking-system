@@ -27,12 +27,11 @@ export const webApi = functions.https.onRequest(main);
 
 app.post('/case', async (request, response) => {
     try {
-        const { name,manager, date, url ,COI} = request.body;
+        const { name,manager, date ,COI} = request.body;
         const data =  {
             name,
             manager,
             date,
-            url,
             COI
         }
         await db.collection('cases').doc(data.name).set(data);

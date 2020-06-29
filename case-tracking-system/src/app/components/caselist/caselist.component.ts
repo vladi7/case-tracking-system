@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import {CaselistService} from './caselist.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-caselist',
@@ -15,7 +16,7 @@ export class CaselistComponent implements OnInit {
   list;
   errors;
   currentUserEmail;
-  constructor(public authService: AuthService, private caselistService: CaselistService) {
+  constructor(public authService: AuthService, private caselistService: CaselistService, private router: Router) {
     this.currentUserEmail = this.authService.getUserData;
     this.caselistService.getAllCasesForAUser().subscribe((result: any) => {
         this.caseList = Object.keys(result).map(keyForHits => {
@@ -35,6 +36,7 @@ export class CaselistComponent implements OnInit {
   }
 
   filterData(data){
+    this.newData = [];
     for (let i = 0; i < data.length; i++) {
 
         if (data[i].manager === this.currentUserEmail){
@@ -43,13 +45,25 @@ export class CaselistComponent implements OnInit {
       }
     return this.newData;
       }
-  getRandomColor() {
-    const color = Math.floor(0x1000000 * Math.random()).toString(16);
-    return '#' + ('000000' + color).slice(-6);
-  }
 
 log(value) {
     console.log(value);
+}
+refresh(){
+  this.currentUserEmail = this.authService.getUserData;
+
+  this.caselistService.getAllCasesForAUser().subscribe((result: any) => {
+      this.caseList = Object.keys(result).map(keyForHits => {
+        return{
+          name: result[keyForHits].data.name, manager: result[keyForHits].data.manager
+        };
+      });
+
+      this.caseList = this.filterData(this.caseList);
+    }, error => {
+      this.errors = 'Error when submitting request. Check your input. Also, you might need to wait since the api calls are limited.';
+    }
+  );
 }
 }
 
