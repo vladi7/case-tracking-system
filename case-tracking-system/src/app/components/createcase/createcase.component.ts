@@ -33,10 +33,7 @@ export class CreatecaseComponent implements OnInit {
 
     this.errors = null;
     if (this.nameValue !== '' && this.managerValue !== '') {
-      this.createservice.createCasePost(this.nameValue, this.managerValue, formatDate(new Date(), 'yyyy/MM/dd', 'en'), this.COIValue).subscribe(data => {
-        console.log(data);
-      });
-      this.router.navigate(['/app-caselist']);
+      this.createservice.createCasePost(this.nameValue, this.managerValue, formatDate(new Date(), 'yyyy/MM/dd', 'en'), this.COIValue);
     }
      else{
       this.errors = 'Case name and manager email have to be entered';

@@ -10,9 +10,8 @@
   {{ snap.bytesTransferred }} of {{ snap.totalBytes }}
 
   <div *ngIf="downloadURL as url">
-    <h3>Results!</h3>
-    <img [src]="url"><br>
-    <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
+    <h3>Uploads Status:</h3>
+  <h4>{{file.name}} Completed</h4>
   </div>
 
   <button (click)="task.pause()" [disabled]="!isActive(snap)">Pause</button>

@@ -5,10 +5,13 @@
   <section id="content">
     <div class="container">
       <div class="row"><div class="col" style="font-size: 30px"><b>{{CaseName}}</b></div></div>
-      <div class="row"><div class="col-4">
+      <div class="row"><div class="col">
         <button (click)="deleteCase()" button type="button" class="btn btn-danger">Delete Case</button>
-      </div></div>
-
+      </div>
+     <div class="col">
+        <button (click)="refresh()" button type="button" class="btn btn-warning">Refresh</button>
+      </div>
+      </div>
       <div class="row" *ngIf="authService.userData as user">
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6"   *ngFor="let fileEntry of fileList">
           <div class="card bg-dark text-white" style="margin: 20px auto;">
@@ -21,12 +24,21 @@
             <div>
               <div class="card-body">
                 <h5 class="card-title">File Name: {{fileEntry.filename | slice:0:30}}</h5>
+                <button (click)="deleteFile(fileEntry.filename)" button type="button" class="btn btn-danger">Delete File</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="container">
+      <div class="row"><div class="col">
+      <app-fileuploader></app-fileuploader>
+      </div></div>
+
+    </div>
+
   </section>
   <footer id="footer">
     <p>© Copyright 2020--CSEE 5590: Web and Mobile Programming</p>
