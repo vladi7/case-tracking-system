@@ -1,11 +1,24 @@
 import { Component } from '@angular/core';
-import {AuthService} from "../../shared/services/auth.service";
+import {AuthService} from '../../shared/services/auth.service';
+
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styles: [
+    '.background {background:#000000; color: white}',
+    'li a { color: white}',
+    'ul.nav a:hover { color: #fffccc  }'
+  ]
 })
+// navbar toggling
 export class HeaderComponent {
-  constructor(public authService: AuthService,)
-  { }
+  navbarOpen = false;
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+  }
+  constructor(public authService: AuthService) {}
+
 }
+

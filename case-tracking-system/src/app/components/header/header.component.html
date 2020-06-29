@@ -1,30 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <img class="align-self-start mr-5 img-thumbnail rounded-circle" style = "height:50px; width:50px;" src="{{(authService.userData.photoURL)}}"
+       alt="{{authService.userData.displayName}}">
+  <!--Header component with mobile friendly navbar(collapses when the screen is minimized)-->
+  <button class="navbar-toggler" type="button"
+          (click)="toggleNavbar()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <!-- Nav Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-     <img class="align-self-start mr-5 img-thumbnail rounded-circle" style = "height:50px; width:50px; margin:-20px" src="{{(authService.userData.photoURL)}}"
-         alt="{{authService.userData.displayName}}">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <ul class="navbar-nav ml-auto">
+  <!--Three links using the router link-->
+  <div class="collapse navbar-collapse"
+       [ngClass]="{ 'show': navbarOpen }">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" ><a class="nav-link" routerLink="/dashboard">Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/app-caselist">Cases</a></li>
+      <li class="nav-item" ><a class="nav-link" routerLink="/" >Log Out</a></li>
+    </ul>
+  </div>
+</nav>
 
-          <li class="nav-item">
-            <a  class="nav-link" routerLink="/dashboard" >
-              User Profile
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/app-caselist">
-              Cases
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="#" (click)="authService.SignOut()">
-             Log out
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
 
