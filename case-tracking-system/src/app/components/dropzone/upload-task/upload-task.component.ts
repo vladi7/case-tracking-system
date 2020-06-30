@@ -4,6 +4,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {RestService} from './rest.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -21,7 +23,7 @@ export class UploadTaskComponent implements OnInit {
   snapshot: Observable<any>;
   downloadURL: string;
 
-  constructor(private storage: AngularFireStorage, private db: AngularFirestore, private http: HttpClient) { }
+  constructor(private storage: AngularFireStorage, private db: AngularFirestore, private http: HttpClient, private router: Router, private rest: RestService) { }
 
   ngOnInit() {
     this.startUpload();
@@ -41,6 +43,8 @@ export class UploadTaskComponent implements OnInit {
     // Progress monitoring
     this.percentage = this.task.percentageChanges();
 
+
+
     this.snapshot   = this.task.snapshotChanges().pipe(
       tap(console.log),
       // The file's download URL
@@ -48,11 +52,24 @@ export class UploadTaskComponent implements OnInit {
         this.downloadURL = await ref.getDownloadURL().toPromise();
         console.log(this.downloadURL + path);
         this.db.collection('files').add( { downloadURL: this.downloadURL, path });
-        const CaseID = 'case1';
+        const DocumentID = this.router.url.slice(14);
         const url = this.downloadURL + path;
-        this.http.post<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/document/', {CaseID, urls : {url} }).subscribe(data => {
-          console.log(data);
+        let filename = this.file.name;
+        let map = new Map<string, string>()
+        map.set('filename', filename);
+        map.set('url', url);
+        // let arrayJson = [];
+        let jsonObject = {};
+        map.forEach((value, key) => {
+          jsonObject[key] = value;
         });
+        this.rest.updateDocumentsForACase(DocumentID, jsonObject);
+
+
+        // arrayJson.push(jsonObject);
+        // this.http.post<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/document/', {DocumentID, urls : arrayJson }).subscribe(data => {
+        //   console.log(data);
+        // });
 
       }),
     );

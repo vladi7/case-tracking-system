@@ -4,22 +4,24 @@
 
 /*content section*/
 #content{
-  background-color: #cfb495;
+  background-color: #ddf3f5;
   font-family: 'Ubuntu', sans-serif;
   color: black;
   padding: 5% 15% ;
-  min-height: 686px;
+  background-size: cover;
+  min-height: 850px;
 }
 /*footer section*/
 #footer{
   padding:3rem;
-  background-color:#a35638;
+  background-color: #ECEFF1;
   text-align: center;
 }
+
 .card {
   margin-bottom: 15px;
-  min-height: 200px;
-  max-height: 200px;
+  min-height: 300px;
+  max-height: 300px;
 }
 
 .card-img-top {

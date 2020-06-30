@@ -20,6 +20,8 @@ export class CreatecaseComponent implements OnInit {
   managerValue;
   dateValue;
   COIValue;
+  usersWithCOI;
+
   constructor(public authService: AuthService,  private route: ActivatedRoute,
               private router: Router, private createservice: CreateserviceService  ) { }
 
@@ -30,13 +32,10 @@ export class CreatecaseComponent implements OnInit {
     this.managerValue = this.manager.nativeElement.value;
 
     this.COIValue = this.COI.nativeElement.value.split(',');
-
+    this.usersWithCOI = [];
     this.errors = null;
     if (this.nameValue !== '' && this.managerValue !== '') {
-      this.createservice.createCasePost(this.nameValue, this.managerValue, formatDate(new Date(), 'yyyy/MM/dd', 'en'), this.COIValue).subscribe(data => {
-        console.log(data);
-      });
-      this.router.navigate(['/app-caselist']);
+      this.createservice.createCasePost(this.nameValue, this.managerValue, formatDate(new Date(), 'yyyy/MM/dd', 'en'), this.COIValue, this.usersWithCOI);
     }
      else{
       this.errors = 'Case name and manager email have to be entered';

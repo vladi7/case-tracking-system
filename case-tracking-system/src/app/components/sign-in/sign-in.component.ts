@@ -32,9 +32,9 @@ export class SignInComponent implements OnInit {
     COI.push(COI2);
 
 
-    this.http.post<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/case/', {name, manager, date, url, COI }).subscribe(data => {
-      console.log(data);
-    });
+    // this.http.post<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/case/', {name, manager, date, url, COI }).subscribe(data => {
+    //   console.log(data);
+    // });
     // this.http.post<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/document/', {CaseID, urls : {url1, url2} }).subscribe(data => {
     //   console.log(data);
     // });

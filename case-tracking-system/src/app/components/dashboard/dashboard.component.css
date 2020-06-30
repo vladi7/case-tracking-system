@@ -4,7 +4,16 @@
 
 /*content section*/
 #content{
-  background-color: #cfb495;
+  background-color: #ddf3f5;
+  font-family: 'Ubuntu', sans-serif;
+  color: black;
+  padding: 5% 15% ;
+  background-size: cover;
+  min-height: 850px;
+}
+
+#content2{
+  background-color: #ECEFF1;
   font-family: 'Ubuntu', sans-serif;
   color: black;
   padding: 5% 15% ;
@@ -14,7 +23,7 @@
 /*footer section*/
 #footer{
   padding:3rem;
-  background-color:#a35638;
+  background-color: #ECEFF1;
   text-align: center;
 }
 

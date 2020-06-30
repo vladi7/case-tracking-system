@@ -21,11 +21,12 @@ export class CaselistComponent implements OnInit {
     this.caselistService.getAllCasesForAUser().subscribe((result: any) => {
         this.caseList = Object.keys(result).map(keyForHits => {
           return{
-            name: result[keyForHits].data.name, manager: result[keyForHits].data.manager
+            name: result[keyForHits].data.name, manager: result[keyForHits].data.manager, COI: result[keyForHits].data.COI, usersWithCOI: result[keyForHits].data.usersWithCOI
           };
         });
 
         this.caseList = this.filterData(this.caseList);
+
       }, error => {
         this.errors = 'Error when submitting request. Check your input. Also, you might need to wait since the api calls are limited.';
       }
@@ -38,11 +39,14 @@ export class CaselistComponent implements OnInit {
   filterData(data){
     this.newData = [];
     for (let i = 0; i < data.length; i++) {
-
-        if (data[i].manager === this.currentUserEmail){
+      let users = [];
+      users = data[i].usersWithCOI;
+      console.log("Users from filter" + users);
+      if(users !== undefined){
+        if (data[i].manager === this.currentUserEmail && !users.includes(this.currentUserEmail)){
           this.newData.push(data[i]);
         }
-      }
+      }}
     return this.newData;
       }
 
