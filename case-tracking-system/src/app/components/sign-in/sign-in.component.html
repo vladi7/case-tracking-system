@@ -13,31 +13,30 @@
 
         <section id="content">
 
-          <div class="formGroup">
+          <div class="formGroup text-center">
             <input type="text" class="formControl" placeholder="Username" #userName required>
           </div>
 
-          <div class="formGroup">
+          <div class="formGroup text-center">
             <input type="password" class="formControl" placeholder="Password" #userPassword required>
           </div>
 
 
           <!-- Calling SignIn Api from AuthService -->
-          <div class="row">
-            <div class="col-lg-4 col-lg-offset-4">
-          <div class="formGroup">
+
+          <div class="formGroup text-center">
             <input type="button" class="btn btn-info" value="Log in"
                    (click)="authService.SignIn(userName.value, userPassword.value)">
           </div>
 
-          <div class="formGroup">
+          <div class="formGroup text-center">
             <span class="or"><span class="orInner">Or</span></span>
           </div>
 
-          <div class="formGroup">
+          <div class="formGroup text-center">
             <span>Sign in with  </span>
 
-            <button type="button" class="btn googleBtn" id="customBtn" (click)="authService.GoogleAuth()">
+            <button type="button" class="btn googleBtn text-center" id="customBtn" (click)="authService.GoogleAuth()">
               <i class="fab fa-google-plus-g"></i>
               <span class="Icon"><img id="'google" src="/assets/google.jpg" width="42px" height="42px"></span>
               <span class="buttonText">Google</span>
@@ -45,14 +44,12 @@
             </button>
           </div>
 
-          <div class="forgotPassword">
+          <div class="forgotPassword text-center">
             <span routerLink="/forgot-password"><a href="/forgot-password">Forgot Password?</a></span>
           </div>
 
-          <div class="redirectToLogin">
+          <div class="redirectToLogin text-center">
             <span>Don't have an account? <span class="redirect" routerLink="/register-user"><a href="/register-user">Sign Up</a></span></span>
-          </div>
-            </div>
           </div>
         </section>
 
