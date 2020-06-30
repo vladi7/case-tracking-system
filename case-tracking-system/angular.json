@@ -27,8 +27,10 @@
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": ["./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"]
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -121,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "case-tracking-system"
+    }
+  },
+  "defaultProject": "case-tracking-system",
+  "cli": {
+    "analytics": "6a927830-89b9-43c5-b2c4-d05ebd73a78d"
+  }
 }
