@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
 export class CreateserviceService {
 
   constructor(private http: HttpClient, private router: Router) { }
-// service that is used to send the request to the server
+// service that is used to send the request to the server to add a case
   createCasePost(name, manager, date, COI, usersWithCOI){
      this.http.post<any>('https://rest-service-case-tracking.firebaseapp.com/api/v1/case/', {name, manager, date, COI, usersWithCOI }).subscribe(data => {
        let map = new Map<string, string>();

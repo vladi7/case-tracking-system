@@ -1,3 +1,4 @@
+//Delaney, Jeff. “Upload Multiple Files to Firebase Storage with Angular.” Fireship.io, Fireship.io, 18 Feb. 2019, fireship.io/lessons/angular-firebase-storage-uploads-multi/.
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';

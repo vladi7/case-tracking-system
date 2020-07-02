@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
   templateUrl: './filelist.component.html',
   styleUrls: ['./filelist.component.css']
 })
+// The class that is used to display the files
 export class FilelistComponent implements OnInit {
   currentUserEmail;
   id;

@@ -8,7 +8,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   templateUrl: './caselist.component.html',
   styleUrls: ['./caselist.component.css']
 })
-
+//retrieves all the data
 export class CaselistComponent implements OnInit {
   @ViewChild('user') user: ElementRef;
   caseList = [];

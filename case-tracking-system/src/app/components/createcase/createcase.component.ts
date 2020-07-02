@@ -12,7 +12,7 @@ import {formatDate} from '@angular/common';
 })
 export class CreatecaseComponent implements OnInit {
   errors;
-
+  //view child techniques that we learned in class
   @ViewChild('name') name: ElementRef;
   @ViewChild('manager') manager: ElementRef;
   @ViewChild('COI') COI: ElementRef;

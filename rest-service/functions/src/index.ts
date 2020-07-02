@@ -10,21 +10,15 @@ const db = admin.firestore(); // Add this
 
 const app = express();
 const main = express();
-//options for cors midddleware
-// const options:cors.CorsOptions = {
-//     allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
-//     credentials: true,
-//     methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
-//     origin: "*",
-//     preflightContinue: false
-// };
+
 
 main.use('/api/v1', app);
 main.use(bodyParser.json());
+//adding cors to solve the issue described in the report
 app.use(cors());
-
 export const webApi = functions.https.onRequest(main);
 
+// post handler for case
 app.post('/case', async (request, response) => {
     try {
         const { name,manager, date ,COI, usersWithCOI} = request.body;
@@ -46,7 +40,7 @@ app.post('/case', async (request, response) => {
 
     }
 });
-
+// get handler for case
 app.get('/cases/:id', async (request, response) => {
     try {
         const caseID = request.params.id;
@@ -69,7 +63,7 @@ app.get('/cases/:id', async (request, response) => {
 
     }
 });
-
+//get handler for all cases
 app.get('/cases', async (request, response) => {
     try {
 
@@ -93,7 +87,7 @@ app.get('/cases', async (request, response) => {
     }
 
 });
-
+//put handler for cases
 app.put('/cases/:id', async (request, response) => {
     try {
 
@@ -124,7 +118,7 @@ app.put('/cases/:id', async (request, response) => {
     }
 
 });
-
+//delete handler for cases
 app.delete('/cases/:id', async (request, response) => {
     try {
 
@@ -148,7 +142,7 @@ app.delete('/cases/:id', async (request, response) => {
     }
 
 });
-
+//post handler for documents
 app.post('/document', async (request, response) => {
     try {
         const { DocumentID, urls} = request.body;
@@ -167,7 +161,7 @@ app.post('/document', async (request, response) => {
 
     }
 });
-
+//get handler for document by id
 app.get('/document/:id', async (request, response) => {
     try {
         const DocumentID = request.params.id;
@@ -191,7 +185,7 @@ app.get('/document/:id', async (request, response) => {
 
     }
 });
-
+// get handler for all documents
 app.get('/documents', async (request, response) => {
     try {
 
@@ -215,9 +209,7 @@ app.get('/documents', async (request, response) => {
     }
 
 });
-
-
-
+//delete handler for documents by id
 app.delete('/documents/:id', async (request, response) => {
     try {
 

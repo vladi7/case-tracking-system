@@ -7,21 +7,22 @@ import {AuthService} from '../../shared/services/auth.service';
   providedIn: 'root'
 })
 export class FilelistService {
-
+  // service to call our api server
   constructor(private httpClient: HttpClient, private router: Router, public authService: AuthService) { }
+  // get all document for a case
   getAllDocumentsForACase(caseName){
     return this.httpClient.get<any>('https://rest-service-case-tracking.firebaseapp.com/api/v1/document/' + caseName);
   }
-
+  // delete a case by id
   deleteCase (id) {
     return this.httpClient.delete<any>('https://rest-service-case-tracking.firebaseapp.com/api/v1/cases/' + id);
   }
-
+  // delete document for the case
   deleteDocumentsForTheCase(id){
     return this.httpClient.delete<any>('https://rest-service-case-tracking.firebaseapp.com/api/v1/documents/' + id);
 
   }
-
+  //delete file
   deleteFile(DocumentID, id){
     this.httpClient.get<any>('https://rest-service-case-tracking.firebaseapp.com/api/v1/document/' + DocumentID).subscribe((result: any) => {
         let filelist = [];
@@ -35,6 +36,7 @@ export class FilelistService {
       }
     );
   }
+  // filter
   filterData(data, urltodelete){
     let newData = [];
     for (let i = 0; i < data.length; i++) {
@@ -44,6 +46,7 @@ export class FilelistService {
     }
     return newData;
   }
+  //handling of COI
   handleOtherCases(id){
     let currentUserEmail = this.authService.getUserData;
     this.httpClient.get<any>('https://rest-service-case-tracking.firebaseapp.com/api/v1/cases/' + id).subscribe((result: any) => {

@@ -1,3 +1,4 @@
+//Delaney, Jeff. “Upload Multiple Files to Firebase Storage with Angular.” Fireship.io, Fireship.io, 18 Feb. 2019, fireship.io/lessons/angular-firebase-storage-uploads-multi/.
 import { Directive, HostListener, Output, EventEmitter } from '@angular/core';
 
 @Directive({
