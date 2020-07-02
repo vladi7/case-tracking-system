@@ -35,7 +35,7 @@ export class CaselistComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+// filters data to show only the cases with the access.
   filterData(data){
     this.newData = [];
     for (let i = 0; i < data.length; i++) {
@@ -43,23 +43,29 @@ export class CaselistComponent implements OnInit {
       users = data[i].usersWithCOI;
       console.log("Users from filter" + users);
       if(users !== undefined){
-        if (data[i].manager === this.currentUserEmail && !users.includes(this.currentUserEmail)){
+        if (data[i].manager.includes(this.currentUserEmail) && !users.includes(this.currentUserEmail)){
+          this.newData.push(data[i]);
+        }
+      }else{
+        if (data[i].manager.includes(this.currentUserEmail)){
           this.newData.push(data[i]);
         }
       }}
+
     return this.newData;
       }
 
 log(value) {
     console.log(value);
 }
+//refresh the case list with all the changes
 refresh(){
   this.currentUserEmail = this.authService.getUserData;
 
   this.caselistService.getAllCasesForAUser().subscribe((result: any) => {
       this.caseList = Object.keys(result).map(keyForHits => {
         return{
-          name: result[keyForHits].data.name, manager: result[keyForHits].data.manager
+          name: result[keyForHits].data.name, manager: result[keyForHits].data.manager, COI: result[keyForHits].data.COI,  usersWithCOI: result[keyForHits].data.usersWithCOI
         };
       });
 

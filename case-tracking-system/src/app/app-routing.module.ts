@@ -19,10 +19,10 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent},
-  {path: 'app-fileuploader', component: FileUploaderComponent},
-  {path: 'app-caselist', component: CaselistComponent},
-  {path: 'app-filelist/:id', component: FilelistComponent},
-  {path: 'app-createcase', component: CreatecaseComponent}
+  {path: 'app-fileuploader', component: FileUploaderComponent, canActivate: [AuthGuard]},
+  {path: 'app-caselist', component: CaselistComponent, canActivate: [AuthGuard]},
+  {path: 'app-filelist/:id', component: FilelistComponent, canActivate: [AuthGuard]},
+  {path: 'app-createcase', component: CreatecaseComponent, canActivate: [AuthGuard]}
 
 ];
 

@@ -1,7 +1,7 @@
-<div class="container-fluid">
   <section id="header">
     <app-header></app-header>
   </section>
+<!-- The component to create the case -->
   <section id="content">
     <div *ngIf="errors" class="alert alert-danger">
       {{ errors }}
@@ -12,18 +12,15 @@
 
           <div class="col"><b>Case Name: </b></div>
           <div class="col form-group input-group">
-            <!--gets recipe from user input-->
             <input #name class="form-control" placeholder="Case1" type="text">
           </div>
-          <div class="col"><b>Case Manager email: </b></div>
-          <!--gets places from user input, otherwise gets the gps coordinates of the user-->
+          <div class="col"><b>Case Managers' emails: </b></div>
           <div class="col form-group input-group">
-            <input #manager  class="form-control" placeholder="email@email.com" type="email">
+            <input #manager  class="form-control" placeholder="email@email.com,email2@email.com" type="email">
           </div>
           <div class="col"><b>Conflict Of Interests: </b></div>
 
           <div class="col form-group input-group">
-            <!--gets recipe from user input-->
             <input #COI class="form-control" placeholder="Case1,Case2,Case4" type="text">
           </div>
         </div>
@@ -43,4 +40,3 @@
   <footer id="footer">
     <p>© Copyright 2020--CSEE 5590: Web and Mobile Programming</p>
   </footer>
-</div>

@@ -1,4 +1,3 @@
-<div class="container-fluid">
 <div class="row" *ngIf="authService.userData as user">
   <div class="col-lg-6">
     <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
@@ -9,7 +8,5 @@
     <h2><strong>Hello:</strong> {{(user.displayName) ? user.displayName : 'User'}}</h2><br>
     <p><strong>User ID: </strong>{{user.uid}}</p>
     <p><strong>Email: </strong>{{user.email}}</p>
-    <p><strong>Email Verified: </strong>{{user.emailVerified}}</p>
   </div>
-</div>
 </div>

@@ -10,24 +10,24 @@ export class FilelistService {
 
   constructor(private httpClient: HttpClient, private router: Router, public authService: AuthService) { }
   getAllDocumentsForACase(caseName){
-    return this.httpClient.get<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/document/' + caseName);
+    return this.httpClient.get<any>('https://rest-service-case-tracking.firebaseapp.com/api/v1/document/' + caseName);
   }
 
   deleteCase (id) {
-    return this.httpClient.delete<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/cases/' + id);
+    return this.httpClient.delete<any>('https://rest-service-case-tracking.firebaseapp.com/api/v1/cases/' + id);
   }
 
   deleteDocumentsForTheCase(id){
-    return this.httpClient.delete<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/documents/' + id);
+    return this.httpClient.delete<any>('https://rest-service-case-tracking.firebaseapp.com/api/v1/documents/' + id);
 
   }
 
   deleteFile(DocumentID, id){
-    this.httpClient.get<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/document/' + DocumentID).subscribe((result: any) => {
+    this.httpClient.get<any>('https://rest-service-case-tracking.firebaseapp.com/api/v1/document/' + DocumentID).subscribe((result: any) => {
         let filelist = [];
         filelist = result.data.urls;
         filelist = this.filterData(filelist, id);
-        this.httpClient.post<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/document/', {DocumentID, urls : filelist }).subscribe((result2: any) => {
+        this.httpClient.post<any>('https://rest-service-case-tracking.firebaseapp.com/api/v1/document/', {DocumentID, urls : filelist }).subscribe((result2: any) => {
           console.log(result2);
         });
       }, error => {
@@ -46,11 +46,11 @@ export class FilelistService {
   }
   handleOtherCases(id){
     let currentUserEmail = this.authService.getUserData;
-    this.httpClient.get<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/cases/' + id).subscribe((result: any) => {
+    this.httpClient.get<any>('https://rest-service-case-tracking.firebaseapp.com/api/v1/cases/' + id).subscribe((result: any) => {
 
       const COIlist = result.data.COI;
         for (let caseName of COIlist){
-          this.httpClient.get<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/cases/' + caseName).subscribe((result2: any) => {
+          this.httpClient.get<any>('https://rest-service-case-tracking.firebaseapp.com/api/v1/cases/' + caseName).subscribe((result2: any) => {
 
             let name = result2.data.name;
             let manager = result2.data.manager;
@@ -66,16 +66,12 @@ export class FilelistService {
             else {
               usersWithCOI.push(currentUserEmail);
             }
-            this.httpClient.post<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/case/', {name, manager, date, COI, usersWithCOI })
+            this.httpClient.post<any>('https://rest-service-case-tracking.firebaseapp.com/api/v1/case/', {name, manager, date, COI, usersWithCOI })
               .subscribe((result3: any) => {
                 console.log(result3);
               }, error => {
                 console.log(error);
               });
-            // filelist = this.filterData(filelist, id);
-            // this.httpClient.post<any>('https://cors-anywhere.herokuapp.com/https://rest-service-case-tracking.firebaseapp.com/api/v1/document/', {DocumentID, urls : filelist }).subscribe((result2: any) => {
-            //   console.log(result2);
-            // });
           }, error => {
             console.log(error);
           });

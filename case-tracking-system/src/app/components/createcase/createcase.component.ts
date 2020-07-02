@@ -27,9 +27,10 @@ export class CreatecaseComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  // component to create the case
   createCase(){
     this.nameValue = this.name.nativeElement.value;
-    this.managerValue = this.manager.nativeElement.value;
+    this.managerValue = this.manager.nativeElement.value.split(',');
 
     this.COIValue = this.COI.nativeElement.value.split(',');
     this.usersWithCOI = [];

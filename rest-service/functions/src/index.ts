@@ -21,7 +21,7 @@ const main = express();
 
 main.use('/api/v1', app);
 main.use(bodyParser.json());
-main.use(cors());
+app.use(cors());
 
 export const webApi = functions.https.onRequest(main);
 

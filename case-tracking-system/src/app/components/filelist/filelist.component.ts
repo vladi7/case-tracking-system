@@ -17,6 +17,7 @@ export class FilelistComponent implements OnInit {
   urls;
   CaseName;
   newData = [];
+  // component to display and act on the files, as well as uploading the files
   constructor(public authService: AuthService, private documentlistService: FilelistService, private activatedroute: ActivatedRoute, private router: Router) {
     this.activatedroute.paramMap.subscribe(params => {
       this.id = params.get('id');
@@ -36,7 +37,7 @@ export class FilelistComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  // method to delete the case
   deleteCase(){
     this.documentlistService.deleteCase(this.id).subscribe(data => {
       console.log(data);
@@ -47,9 +48,11 @@ export class FilelistComponent implements OnInit {
 
     });
   }
+  // method to delete the files
   deleteFile(filename){
     this.documentlistService.deleteFile(this.id, filename);
   }
+  // method to display only the files with a filename
   filterData(data){
     this.newData = [];
     for (let i = 0; i < data.length; i++) {
@@ -60,7 +63,7 @@ export class FilelistComponent implements OnInit {
     }
     return this.newData;
   }
-
+  //method to refresh the page
   refresh(){
     this.documentlistService.getAllDocumentsForACase(this.id).subscribe((result: any) => {
         this.fileList = result.data.urls;
