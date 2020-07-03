@@ -20,3 +20,5 @@ This server is used to handle api requests to the database.
 
 
 # Please don't do too many requests as I am on a free plan and don't want to lose access. 
+
+Note that WIKI is different from the report, so please consult it for the specifics of the implementation.
