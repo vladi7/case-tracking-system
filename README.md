@@ -1,4 +1,3 @@
-# Web Project Exam Instruction to Run
 
 ## Running Case Tracking System(main app): 
 
